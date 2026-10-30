@@ -1,0 +1,133 @@
+:root {
+  --cierre-bg: #f8f1e9;
+  --cierre-card: #fffaf4;
+  --cierre-primary: #713d20;
+  --cierre-primary-dark: #542b16;
+  --cierre-accent: #ead1ba;
+  --cierre-border: #ddc5af;
+  --cierre-text: #2d1b12;
+  --cierre-muted: #805b45;
+}
+
+.cierre-semanal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  background: var(--cierre-bg);
+  font-family: Fredoka, Arial, Helvetica, sans-serif;
+}
+
+.cierre-semanal::before,
+.cierre-semanal::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(185, 116, 61, 0.09);
+  pointer-events: none;
+}
+
+.cierre-semanal::before {
+  top: -125px;
+  left: -95px;
+}
+
+.cierre-semanal::after {
+  right: -110px;
+  bottom: -145px;
+}
+
+.cierre-semanal-bloqueado {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+}
+
+.cierre-semanal-tarjeta {
+  position: relative;
+  width: min(680px, 100%);
+  padding: clamp(34px, 7vw, 68px);
+  border: 1px solid var(--cierre-border);
+  border-radius: 28px;
+  background: var(--cierre-card);
+  box-shadow: 0 18px 60px rgba(70, 39, 22, 0.16);
+  text-align: center;
+  animation: cierre-semanal-entrada 0.55s ease-out both;
+}
+
+.cierre-semanal-icono {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--cierre-accent);
+  color: var(--cierre-primary);
+  font-size: 36px;
+}
+
+.cierre-semanal-titulo {
+  margin: 0 0 18px;
+  color: var(--cierre-primary-dark);
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.12;
+}
+
+.cierre-semanal-mensaje {
+  margin: 0;
+  color: var(--cierre-text);
+  font-size: clamp(18px, 3vw, 22px);
+  line-height: 1.55;
+}
+
+.cierre-semanal-mensaje strong {
+  color: var(--cierre-primary);
+}
+
+.cierre-semanal-pie {
+  margin: 28px -20px 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--cierre-border);
+  color: var(--cierre-muted);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+@keyframes cierre-semanal-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .cierre-semanal {
+    padding: 14px;
+  }
+
+  .cierre-semanal-tarjeta {
+    padding: 38px 22px 30px;
+    border-radius: 22px;
+  }
+
+  .cierre-semanal-pie {
+    margin-inline: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cierre-semanal-tarjeta {
+    animation: none;
+  }
+}

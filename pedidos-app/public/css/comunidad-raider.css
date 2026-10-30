@@ -1,0 +1,17 @@
+.brand-comunidad {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-family: Fredoka, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.15px;
+}
+
+@media (max-width: 520px) {
+  .brand-comunidad {
+    max-width: 180px;
+    font-size: 10px;
+  }
+}
