@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Armar pedido | CRACKS</title>
+
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Fuente CRACKS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-content">
+
+      <a href="/" class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-cookie-bite"></i>
+        </div>
+
+        <div>
+          <h1>CRACKS</h1>
+          <p>Empresa lucrativa</p>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/">Inicio</a>
+        <a href="/#sabores">Sabores</a>
+        <a href="/#precios">Precios</a>
+        <a href="/#como-funciona">Cómo funciona</a>
+      </nav>
+
+      <a href="/pedido.html" class="btn btn-primary">
+        <i class="fa-solid fa-basket-shopping"></i>
+        Mi pedido
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- BANNER -->
+  <section class="pedido-banner">
+
+    <div class="pedido-banner-overlay"></div>
+
+    <div class="container pedido-banner-content">
+
+      <span class="badge pedido-badge">
+        <i class="fa-solid fa-basket-shopping"></i>
+        Tu pedido
+      </span>
+
+      <div class="pedido-title-box">
+
+        <h2>Armá tu pedido</h2>
+
+        <p>
+          Elegí tus paquetes, combiná tus sabores y completá tus datos.
+          Después te escribimos para confirmar el total, el pago y el retiro.
+        </p>
+
+        <div class="pedido-entrega-info">
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <div>
+           <strong>Próxima entrega:</strong>
+<span id="proximaEntrega"></span>
+<br>
+<span>Pedidos hasta el viernes anterior a las 19:00</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PEDIDO -->
+  <main class="pedido-section">
+
+    <div class="container">
+
+      <div class="pedido-layout">
+
+
+        <!-- COLUMNA IZQUIERDA -->
+        <section class="pedido-main">
+
+
+          <!-- PASO 1 -->
+          <div class="card pedido-step-card">
+
+            <div class="card-body">
+
+              <div class="pedido-step-title">
+
+                <span class="pedido-step-number">
+                  1
+                </span>
+
+                <div>
+                  <h3>Agregá tus paquetes</h3>
+
+                  <p>
+                    Podés agregar todos los paquetes que quieras.
+                    Cada paquete trae 6 galletitas.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <div class="agregar-paquetes">
+
+                <!-- CLÁSICO -->
+                <button
+                  type="button"
+                  class="agregar-paquete-btn"
+                  id="agregarClasico"
+                >
+
+                  <span class="package-option-icon">
+                    <i class="fa-solid fa-cookie"></i>
+                  </span>
+
+                  <span>
+                    <strong>
+                      Agregar paquete clásico
+                    </strong>
+
+                    <small>
+                      6 galletitas del mismo sabor
+                    </small>
+
+                    <b>$3.500</b>
+                  </span>
+
+                  <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+
+                <!-- SURTIDO -->
+                <button
+                  type="button"
+                  class="agregar-paquete-btn"
+                  id="agregarSurtido"
+                >
+
+                  <span class="package-option-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                  </span>
+
+                  <span>
+                    <strong>
+                      Agregar paquete surtido
+                    </strong>
+
+                    <small>
+                      Combiná 6 galletitas
+                    </small>
+
+                    <b>$3.500</b>
+                  </span>
+
+                  <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- PASO 2 -->
+          <div class="card pedido-step-card">
+
+            <div class="card-body">
+
+              <div class="pedido-step-title">
+
+                <span class="pedido-step-number">
+                  2
+                </span>
+
+                <div>
+                  <h3>Tu selección</h3>
+
+                  <p>
+                    Personalizá cada paquete por separado.
+                  </p>
+                </div>
+
+              </div>
+
+
+              <div
+                id="listaPaquetes"
+                class="lista-paquetes"
+              >
+
+                <div class="paquetes-vacio">
+
+                  <i class="fa-solid fa-cookie-bite"></i>
+
+                  <p>
+                    Todavía no agregaste ningún paquete.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- COLUMNA DERECHA -->
+        <aside class="pedido-sidebar">
+
+          <div class="card sticky-card pedido-checkout">
+
+            <div class="card-body">
+
+
+              <!-- RESUMEN -->
+              <section class="checkout-section">
+
+                <div class="checkout-title">
+
+                  <div class="checkout-icon">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                  </div>
+
+                  <div>
+                    <h3>Resumen de tu pedido</h3>
+
+                    <p>
+                      Revisá todo antes de enviarlo.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <div
+                  id="resumenPedido"
+                  class="resumen-pedido"
+                ></div>
+
+              </section>
+
+
+              <div class="checkout-divider"></div>
+
+
+              <!-- DATOS -->
+              <section class="checkout-section">
+
+                <div class="checkout-title">
+
+                  <div class="checkout-icon">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+
+                  <div>
+                    <h3>Tus datos</h3>
+
+                    <p>
+                      Los usamos solamente para confirmar tu pedido.
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <form id="pedidoForm">
+
+
+                  <!-- NOMBRE -->
+                  <div class="form-group">
+
+                    <label for="nombre">
+                      Nombre y apellido
+                      <span class="required">*</span>
+                    </label>
+
+                    <div class="input-icon-wrapper">
+
+                      <i class="fa-regular fa-user"></i>
+
+                      <input
+                        type="text"
+                        id="nombre"
+                        class="input input-with-icon"
+                        placeholder="Ej: Juan Pérez"
+                        required
+                      />
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- TELÉFONO -->
+                  <div class="form-group">
+
+                    <label for="telefono">
+                      Teléfono
+                      <span class="required">*</span>
+                    </label>
+
+                    <div class="input-icon-wrapper">
+
+                      <i class="fa-solid fa-phone"></i>
+
+                      <input
+                        type="tel"
+                        id="telefono"
+                        class="input input-with-icon"
+                        placeholder="Ej: 11 1234 5678"
+                        required
+                      />
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- FORMA DE PAGO -->
+                  <div class="form-group payment-form-group">
+
+                    <label>
+                      Forma de pago
+                      <span class="required">*</span>
+                    </label>
+
+
+                    <div class="payment-options">
+
+
+                      <!-- TRANSFERENCIA -->
+                      <label class="payment-option">
+
+                        <input
+                          type="radio"
+                          name="pago"
+                          value="transferencia"
+                          checked
+                        />
+
+                        <span class="payment-icon">
+                          <i class="fa-solid fa-building-columns"></i>
+                        </span>
+
+                        <span>
+                          <strong>
+                            Transferencia
+                          </strong>
+
+                          <small>
+                            Te mostramos los datos para transferir.
+                          </small>
+                        </span>
+
+                      </label>
+
+
+                      <!-- PAGO AL RETIRAR -->
+                      <label class="payment-option">
+
+                        <input
+                          type="radio"
+                          name="pago"
+                          value="retiro"
+                        />
+
+                        <span class="payment-icon">
+                          <i class="fa-solid fa-money-bill-wave"></i>
+                        </span>
+
+                        <span>
+                          <strong>
+                            Pago al retirar
+                          </strong>
+
+                          <small>
+                            Pagás cuando buscás tu pedido.
+                          </small>
+                        </span>
+
+                      </label>
+
+                    </div>
+
+
+                    <!-- DATOS TRANSFERENCIA -->
+                    <div
+                      id="datosTransferencia"
+                      class="transfer-info"
+                    >
+
+                      <div class="transfer-info-title">
+
+                        <i class="fa-solid fa-building-columns"></i>
+
+                        <div>
+                          <strong>
+                            Datos para transferir
+                          </strong>
+
+                          <span>
+                            Usá estos datos para completar el pago.
+                          </span>
+                        </div>
+
+                      </div>
+
+
+                      <div class="transfer-info-row">
+
+                        <span>
+                          Alias
+                        </span>
+
+                        <strong>
+                          victoria.marrr
+                        </strong>
+
+                      </div>
+
+
+                      <div class="transfer-info-row">
+
+                        <span>
+                          Titular
+                        </span>
+
+                        <strong>
+                          Victoria Valentina Martinez Aguilera
+                        </strong>
+
+                      </div>
+
+
+                      <div class="transfer-info-comprobante">
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        <div>
+
+                          <span>
+                            Enviar comprobante a:
+                          </span>
+
+                          <strong>
+                            +54 9 11 7634-7565 (Vicky)
+                          </strong>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- COMENTARIOS -->
+                  <div class="form-group">
+
+                    <label for="comentarios">
+
+                      Comentarios
+
+                      <span class="optional">
+                        opcional
+                      </span>
+
+                    </label>
+
+                    <textarea
+                      id="comentarios"
+                      class="input"
+                      rows="4"
+                      placeholder="Ej: lo necesito para el sábado..."
+                    ></textarea>
+
+                  </div>
+
+
+                  <!-- RETIRO -->
+                  <div class="pickup-notice">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+
+                      <strong>
+                        Retiro en SanPa
+                      </strong>
+
+                      <span>
+                        Los sábados a partir de las 17:00.
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- ENVIAR -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block submit-order"
+                  >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Enviar pedido
+
+                  </button>
+
+                </form>
+
+              </section>
+
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+  </main>
+
+<!-- MODAL RESULTADO PEDIDO -->
+<div id="pedidoModal" class="pedido-modal" hidden>
+
+  <div class="pedido-modal-overlay"></div>
+
+  <div class="pedido-modal-card">
+
+    <div
+      id="pedidoModalIcon"
+      class="pedido-modal-icon"
+    >
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h3 id="pedidoModalTitulo">
+      Pedido enviado
+    </h3>
+
+    <p id="pedidoModalMensaje">
+      Tu pedido fue enviado correctamente.
+    </p>
+
+    <button
+      type="button"
+      id="cerrarPedidoModal"
+      class="btn btn-primary pedido-modal-btn"
+    >
+      Cerrar
+    </button>
+
+  </div>
+
+</div>
+
+  <script src="/js/pedido.js"></script>
+
+</body>
+</html>

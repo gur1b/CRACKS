@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CRACKS | Galletitas caseras</title>
+
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Tipografía para CRACKS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-content">
+
+      <a href="/" class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-cookie-bite"></i>
+        </div>
+
+        <div>
+          <h1>CRACKS</h1>
+          <p>Empresa lucrativa</p>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#sabores">Sabores</a>
+        <a href="#precios">Precios</a>
+        <a href="#como-funciona">Cómo pedir</a>
+      </nav>
+
+      <a href="/pedido.html" class="btn btn-primary">
+        <i class="fa-solid fa-basket-shopping"></i>
+        Hacer mi pedido
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-text">
+
+          <span class="badge">
+            <i class="fa-solid fa-cookie-bite"></i>
+            Hechas a pedido
+          </span>
+
+          <h2>
+            <span class="hero-cracks">CRACKS</span>
+            <span class="hero-separator">—</span>
+            Galletitas caseras para compartir
+          </h2>
+
+          <p>
+            Elegí tus sabores favoritos, armá tu pedido y pagá por transferencia
+            o al retirar. ¡Vení a SanPa a retirarlo!
+          </p>
+
+          <div class="hero-actions">
+            <a href="#sabores" class="btn btn-primary">
+              Ver sabores
+            </a>
+
+            <a href="/pedido.html" class="btn btn-outline">
+              <i class="fa-solid fa-basket-shopping"></i>
+              Armar mi pedido
+            </a>
+          </div>
+
+          <ul class="hero-highlights">
+            <li>
+              <i class="fa-solid fa-cookie-bite"></i>
+              6 galletitas por paquete
+            </li>
+
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              Retiro en SanPa
+            </li>
+
+            <li>
+              <i class="fa-solid fa-money-bill-wave"></i>
+              Transferencia o pago al retirar
+            </li>
+          </ul>
+
+          <div class="delivery-box">
+            <div>
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div>
+              <strong>Próxima entrega:</strong>
+            <span id="proximaEntrega"></span>
+            <br>
+            <span>Pedidos hasta el viernes anterior a las 19:00</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="hero-image">
+          <img
+            src="/assets/images/hero-cookies.jpg.avif"
+            alt="Galletitas caseras CRACKS"
+          />
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SABORES -->
+    <section id="sabores" class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="badge">
+            <i class="fa-solid fa-heart"></i>
+            Hechas a mano
+          </span>
+
+          <h2>Conocé nuestros sabores</h2>
+        </div>
+
+
+        <div class="cards-grid">
+
+          <!-- FANGIO -->
+          <article class="card sabor-card">
+
+            <div class="sabor-image">
+              <img
+                src="/assets/images/sabor-fangio.jpg.webp"
+                alt="Galletita Fangio"
+              />
+            </div>
+
+            <div class="card-body">
+              <h3>Fangio</h3>
+
+              <p>
+                Una clásica pepa, simple y rica. Ideal para los amantes
+                de lo tradicional.
+              </p>
+            </div>
+
+          </article>
+
+
+          <!-- LOCOMOTORA -->
+          <article class="card sabor-card">
+
+            <div class="sabor-image">
+              <img
+                src="/assets/images/sabor-locomotora.jpg.png"
+                alt="Galletita Locomotora"
+              />
+            </div>
+
+            <div class="card-body">
+              <h3>Locomotora</h3>
+
+              <p>
+                Cookie de chocolate con chips y rocklets.
+                Intensa, divertida y bien golosa.
+              </p>
+            </div>
+
+          </article>
+
+
+          <!-- MESSI -->
+          <article class="card sabor-card">
+
+            <div class="sabor-image">
+              <img
+                src="/assets/images/sabor-messi.jpg.png"
+                alt="Galletita Messi"
+              />
+            </div>
+
+            <div class="card-body">
+              <h3>Messi</h3>
+
+              <p>
+                Cookie de limón bañada en chocolate.
+                Un sabor distinto y memorable.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <div class="section-cta">
+          <a href="/pedido.html" class="btn btn-primary">
+            <i class="fa-solid fa-basket-shopping"></i>
+            Armar mi pedido
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PRECIOS -->
+    <section id="precios" class="section section-alt">
+      <div class="container">
+
+        <div class="section-heading left">
+          <h2>Nuestros precios</h2>
+
+          <p>
+            Cada paquete trae 6 galletitas. Elegí una variedad
+            o combiná tus favoritas.
+          </p>
+        </div>
+
+
+        <div class="cards-grid pricing-grid">
+
+          <!-- CLÁSICO -->
+          <article class="card price-card">
+            <div class="card-body">
+
+              <div class="price-icon">
+                <i class="fa-solid fa-cookie"></i>
+              </div>
+
+              <h3>Paquete clásico</h3>
+
+              <p>
+                6 galletitas de una sola variedad.
+              </p>
+
+              <div class="price">$3.500</div>
+
+              <a
+                href="/pedido.html?tipo=clasico"
+                class="btn btn-primary btn-block"
+              >
+                Elegir este paquete
+              </a>
+
+            </div>
+          </article>
+
+
+          <!-- SURTIDO -->
+          <article class="card price-card">
+            <div class="card-body">
+
+              <div class="price-icon">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+
+              <h3>Paquete surtido</h3>
+
+              <p>
+                6 galletitas combinando diferentes sabores.
+              </p>
+
+              <div class="price">$3.500</div>
+
+              <a
+                href="/pedido.html?tipo=surtido"
+                class="btn btn-primary btn-block"
+              >
+                Elegir este paquete
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CÓMO PEDIR -->
+    <section id="como-funciona" class="section">
+      <div class="container">
+
+        <div class="section-heading left">
+          <span class="badge">
+            <i class="fa-solid fa-list-check"></i>
+            Fácil y rápido
+          </span>
+
+          <h2>Cómo pedir</h2>
+        </div>
+
+
+        <div class="steps-grid">
+
+          <!-- PASO 1 -->
+          <article class="card step-card">
+            <div class="card-body">
+
+              <div class="step-icon">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+
+              <span class="step-number">1</span>
+
+              <h3>Elegí tu paquete</h3>
+
+              <p>
+                Seleccioná si querés un paquete clásico o surtido.
+              </p>
+
+            </div>
+          </article>
+
+
+          <!-- PASO 2 -->
+          <article class="card step-card">
+            <div class="card-body">
+
+              <div class="step-icon">
+                <i class="fa-solid fa-cookie-bite"></i>
+              </div>
+
+              <span class="step-number">2</span>
+
+              <h3>Armá tu pedido</h3>
+
+              <p>
+                Elegí sabores y cantidades de forma simple.
+              </p>
+
+            </div>
+          </article>
+
+
+          <!-- PASO 3 -->
+          <article class="card step-card">
+            <div class="card-body">
+
+              <div class="step-icon">
+                <i class="fa-solid fa-address-card"></i>
+              </div>
+
+              <span class="step-number">3</span>
+
+              <h3>Dejanos tus datos</h3>
+
+              <p>
+                Completá tu nombre y teléfono para que podamos contactarte.
+              </p>
+
+            </div>
+          </article>
+
+
+          <!-- PASO 4 -->
+          <article class="card step-card">
+            <div class="card-body">
+
+              <div class="step-icon">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+
+              <span class="step-number">4</span>
+
+              <h3>Confirmamos todo</h3>
+
+              <p>
+                Te escribimos para validar el pedido, el total y el retiro.
+              </p>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div>
+        <div class="footer-brand">
+          <div class="footer-cookie">
+            <i class="fa-solid fa-cookie-bite"></i>
+          </div>
+
+          <h3>CRACKS</h3>
+        </div>
+
+        <p>
+          Galletitas caseras para compartir, hechas a pedido.
+        </p>
+      </div>
+
+
+      <div>
+        <h4>La tienda</h4>
+
+        <ul>
+          <li>
+            <a href="#sabores">Sabores</a>
+          </li>
+
+          <li>
+            <a href="#precios">Precios</a>
+          </li>
+
+          <li>
+            <a href="/pedido.html">Hacer un pedido</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <div>
+        <h4>Pagos y retiro</h4>
+
+        <p>
+          Transferencia bancaria o pago al retirar.
+          El pedido se retira en SanPa una vez confirmado.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 CRACKS · Hecho con amor y muchas cookies.
+    </div>
+  </footer>
+
+   <script src="/js/index.js"></script>
+
+</body>
+</html>
