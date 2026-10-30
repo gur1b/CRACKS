@@ -1,6 +1,6 @@
 (function () {
   // Cambiar a false para mostrar la pagina normalmente.
-  const CARTEL_HABILITADO = false;
+  const CARTEL_HABILITADO = true;
 
   // Fecha en que activas el cartel (AAAA-MM-DD).
   // La entrega se calcula para el primer sábado que esté al menos una semana después.
