@@ -54,9 +54,9 @@ function crearSurtido() {
     tipo: "surtido",
 
     sabores: {
-      fangio: 0,
-      locomotora: 0,
-      messi: 0
+      fangio: 2,
+      locomotora: 2,
+      messi: 2
     }
   });
 
@@ -331,10 +331,6 @@ function renderSurtido(
   index
 ) {
 
-  const total =
-    totalSurtido(paquete);
-
-
   return `
 
     <div class="paquete-item">
@@ -354,7 +350,7 @@ function renderSurtido(
             </strong>
 
             <small>
-              Elegí 6 galletitas
+              2 galletitas de cada sabor
             </small>
 
           </div>
@@ -373,47 +369,10 @@ function renderSurtido(
 
       </div>
 
-
-      ${crearFilaSabor(
-        paquete,
-        "fangio",
-        "Fangio"
-      )}
-
-
-      ${crearFilaSabor(
-        paquete,
-        "locomotora",
-        "Locomotora"
-      )}
-
-
-      ${crearFilaSabor(
-        paquete,
-        "messi",
-        "Messi"
-      )}
-
-
-      <div class="
-        surtido-total
-        ${
-          total === 6
-            ? "surtido-completo"
-            : ""
-        }
-      ">
-
-        <span>
-          Galletitas elegidas
-        </span>
-
-        <strong>
-          ${total} / 6
-        </strong>
-
+      <div class="surtido-regla">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Incluye 2 galletitas Fangio, 2 Locomotora y 2 Messi.</span>
       </div>
-
 
       <div class="paquete-precio">
         $${PRECIO_PAQUETE.toLocaleString("es-AR")}
@@ -588,7 +547,7 @@ function renderResumen() {
             Surtido · ${
               sabores.length
                 ? sabores.join(" · ")
-                : "sin completar"
+                : "2 Fangio · 2 Locomotora · 2 Messi"
             }
           </small>
         `;
@@ -737,7 +696,11 @@ document
         paquetes.find(
           paquete =>
             paquete.tipo === "surtido" &&
-            totalSurtido(paquete) !== 6
+            (
+              paquete.sabores.fangio !== 2 ||
+              paquete.sabores.locomotora !== 2 ||
+              paquete.sabores.messi !== 2
+            )
         );
 
 
@@ -746,7 +709,7 @@ document
         mostrarModalPedido(
   "error",
   "Paquete incompleto",
-  "Cada paquete surtido debe tener exactamente 6 galletitas."
+  "Cada paquete surtido debe tener exactamente 2 galletitas de cada sabor."
 );
 
         return;
