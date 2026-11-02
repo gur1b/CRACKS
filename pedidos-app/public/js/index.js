@@ -14,11 +14,11 @@ function actualizarProximaEntrega() {
     diasHastaSabado = 7;
   }
 
-  // Si es viernes después de las 19:00,
+  // Si es viernes después de las 13:00,
   // pasar al sábado de la semana siguiente
   if (
     diaSemana === 5 &&
-    hora >= 19
+    hora >= 13
   ) {
     diasHastaSabado += 7;
   }
