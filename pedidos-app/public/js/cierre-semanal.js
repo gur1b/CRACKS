@@ -1,6 +1,6 @@
 (function () {
   // Cambiar a false para mostrar la página normalmente.
-  const CARTEL_HABILITADO = true;
+  const CARTEL_HABILITADO = false;
 
   // Fecha de la próxima entrega (AAAA-MM-DD).
   const FECHA_PROXIMA_ENTREGA = "2026-11-14";
