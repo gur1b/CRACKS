@@ -3,7 +3,7 @@ function actualizarProximaEntrega() {
     document.getElementById("proximaEntrega");
 
   if (elemento) {
-    elemento.textContent = "Sábado, 14 de noviembre";
+    elemento.textContent = "Sábado, 21 de noviembre";
   }
 }
 
