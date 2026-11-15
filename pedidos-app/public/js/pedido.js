@@ -911,28 +911,30 @@ document
 
       const paquetesParaEnviar =
         paquetes.map(
-          (paquete, index) => ({
-            ...paquete,
-            chocolate:
-              Number(paquete.chocolate || 0) +
-              (
-                (index + 1) %
-                  PAQUETES_POR_SALSA_GRATIS ===
-                0
-                  ? 1
-                  : 0
-              )
-          })
-        );
+          (paquete, index) => {
+            const tieneSalsaGratis =
+              (index + 1) %
+                PAQUETES_POR_SALSA_GRATIS ===
+              0;
 
-      const comentariosConPromo = [
-        comentarios,
-        salsasGratis > 0
-          ? `Promo: ${salsasGratis} salsa${salsasGratis > 1 ? "s" : ""} de chocolate gratis`
-          : ""
-      ]
-        .filter(Boolean)
-        .join(" | ");
+            return {
+              ...paquete,
+              chocolate:
+                Number(paquete.chocolate || 0) +
+                (tieneSalsaGratis ? 1 : 0),
+              precioPaquete:
+                calcularPrecioPaquete(paquete),
+              comentarios: [
+                comentarios,
+                tieneSalsaGratis
+                  ? "Salsa gratis"
+                  : ""
+              ]
+                .filter(Boolean)
+                .join(" | ")
+            };
+          }
+        );
 
 
       const payload = {
@@ -940,12 +942,14 @@ document
         nombre,
         telefono,
         pago,
-        comentarios: comentariosConPromo,
+        comentarios,
 
         paquetes: paquetesParaEnviar,
 
         cantidadPaquetes:
           paquetes.length,
+
+        salsasGratis,
 
         total
 
