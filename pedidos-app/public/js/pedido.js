@@ -1,4 +1,6 @@
 const PRECIO_PAQUETE = 3500;
+const PRECIO_SALSA_CHOCOLATE = 1000;
+const PAQUETES_POR_SALSA_GRATIS = 3;
 
 const listaPaquetes =
   document.getElementById("listaPaquetes");
@@ -40,7 +42,8 @@ function crearClasico() {
   paquetes.push({
     id: siguienteId++,
     tipo: "clasico",
-    sabor: "Fangio"
+    sabor: "Fangio",
+    chocolate: 0
   });
 
   render();
@@ -57,7 +60,8 @@ function crearSurtido() {
       fangio: 2,
       locomotora: 2,
       messi: 2
-    }
+    },
+    chocolate: 0
   });
 
   render();
@@ -98,6 +102,44 @@ function cambiarSaborClasico(
   paquete.sabor = sabor;
 
   renderResumen();
+}
+
+
+function cambiarChocolate(
+  id,
+  agregado
+) {
+
+  const paquete =
+    paquetes.find(
+      p => p.id === id
+    );
+
+  if (!paquete) return;
+
+  paquete.chocolate =
+    agregado ? 1 : 0;
+
+  render();
+}
+
+
+function calcularPrecioPaquete(paquete) {
+
+  return (
+    PRECIO_PAQUETE +
+    Number(paquete.chocolate || 0) *
+      PRECIO_SALSA_CHOCOLATE
+  );
+}
+
+
+function cantidadSalsasGratis() {
+
+  return Math.floor(
+    paquetes.length /
+      PAQUETES_POR_SALSA_GRATIS
+  );
 }
 
 
@@ -313,8 +355,33 @@ function renderClasico(
       </div>
 
 
+      <label class="salsa-chocolate-opcion">
+
+        <input
+          type="checkbox"
+          ${paquete.chocolate ? "checked" : ""}
+          onchange="cambiarChocolate(${paquete.id}, this.checked)"
+        />
+
+        <span class="salsa-chocolate-icono">
+          <svg class="salsa-chocolate-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+              <path d="M5 13V4.75a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2V13l-1.75-1.25L15.5 13l-1.75-1.25L12 13l-1.75-1.25L8.5 13l-1.75-1.25Zm7-10.25V12M5 7.5h14"/>
+              <path d="m5 13l1.75-1.25L8.5 13l1.75-1.25L12 13l1.75-1.25L15.5 13l1.75-1.25L19 13v6.25a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/>
+            </g>
+          </svg>
+        </span>
+
+        <span class="salsa-chocolate-detalle">
+          <strong>Salsa de chocolate</strong>
+          <small>Agregar por $${PRECIO_SALSA_CHOCOLATE.toLocaleString("es-AR")}</small>
+        </span>
+
+      </label>
+
+
       <div class="paquete-precio">
-        $${PRECIO_PAQUETE.toLocaleString("es-AR")}
+        $${calcularPrecioPaquete(paquete).toLocaleString("es-AR")}
       </div>
 
     </div>
@@ -374,8 +441,32 @@ function renderSurtido(
         <span>Incluye 2 galletitas Fangio, 2 Locomotora y 2 Messi.</span>
       </div>
 
+      <label class="salsa-chocolate-opcion">
+
+        <input
+          type="checkbox"
+          ${paquete.chocolate ? "checked" : ""}
+          onchange="cambiarChocolate(${paquete.id}, this.checked)"
+        />
+
+        <span class="salsa-chocolate-icono">
+          <svg class="salsa-chocolate-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+              <path d="M5 13V4.75a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2V13l-1.75-1.25L15.5 13l-1.75-1.25L12 13l-1.75-1.25L8.5 13l-1.75-1.25Zm7-10.25V12M5 7.5h14"/>
+              <path d="m5 13l1.75-1.25L8.5 13l1.75-1.25L12 13l1.75-1.25L15.5 13l1.75-1.25L19 13v6.25a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/>
+            </g>
+          </svg>
+        </span>
+
+        <span class="salsa-chocolate-detalle">
+          <strong>Salsa de chocolate</strong>
+          <small>Agregar por $${PRECIO_SALSA_CHOCOLATE.toLocaleString("es-AR")}</small>
+        </span>
+
+      </label>
+
       <div class="paquete-precio">
-        $${PRECIO_PAQUETE.toLocaleString("es-AR")}
+        $${calcularPrecioPaquete(paquete).toLocaleString("es-AR")}
       </div>
 
     </div>
@@ -488,7 +579,7 @@ function renderResumen() {
             </strong>
 
             <span>
-              $${PRECIO_PAQUETE.toLocaleString("es-AR")}
+              $${calcularPrecioPaquete(paquete).toLocaleString("es-AR")}
             </span>
 
           </div>
@@ -540,7 +631,6 @@ function renderResumen() {
           );
         }
 
-
         html += `
 
           <small>
@@ -553,6 +643,21 @@ function renderResumen() {
         `;
       }
 
+      if (paquete.chocolate) {
+        html += `
+
+          <small>
+            <svg class="salsa-chocolate-svg salsa-chocolate-mini-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="M5 13V4.75a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2V13l-1.75-1.25L15.5 13l-1.75-1.25L12 13l-1.75-1.25L8.5 13l-1.75-1.25Zm7-10.25V12M5 7.5h14"/>
+                <path d="m5 13l1.75-1.25L8.5 13l1.75-1.25L12 13l1.75-1.25L15.5 13l1.75-1.25L19 13v6.25a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/>
+              </g>
+            </svg>
+            Salsa de chocolate
+          </small>
+        `;
+      }
+
 
       html += `
         </div>
@@ -560,10 +665,43 @@ function renderResumen() {
     }
   );
 
+  const salsasGratis =
+    cantidadSalsasGratis();
+
+  if (salsasGratis > 0) {
+    html += `
+
+      <div class="resumen-paquete resumen-promo-salsa">
+
+        <div class="resumen-paquete-header">
+
+          <strong>
+            <i class="fa-solid fa-gift"></i>
+            Salsa${salsasGratis > 1 ? "s" : ""} de chocolate gratis
+            ${salsasGratis > 1 ? `× ${salsasGratis}` : ""}
+          </strong>
+
+          <span>
+            Gratis
+          </span>
+
+        </div>
+
+        <small>
+          Promo: una salsa gratis por cada 3 paquetes.
+        </small>
+
+      </div>
+    `;
+  }
+
 
   const total =
-    paquetes.length *
-    PRECIO_PAQUETE;
+    paquetes.reduce(
+      (acumulado, paquete) =>
+        acumulado + calcularPrecioPaquete(paquete),
+      0
+    );
 
 
   html += `
@@ -587,6 +725,50 @@ function renderResumen() {
 }
 
 
+function renderPromoSalsa() {
+
+  const promoSalsa =
+    document.getElementById("promoSalsa");
+
+  if (!promoSalsa) return;
+
+  const salsasGratis =
+    cantidadSalsasGratis();
+
+  const paquetesParaProximaSalsa =
+    PAQUETES_POR_SALSA_GRATIS -
+    (paquetes.length % PAQUETES_POR_SALSA_GRATIS);
+
+  let mensaje;
+
+  if (salsasGratis > 0) {
+    mensaje =
+      `¡Promo de cierre! Te llevás ${salsasGratis} ` +
+      `salsa${salsasGratis > 1 ? "s" : ""} de chocolate gratis.`;
+  } else {
+    mensaje =
+      `¡Promo! Una salsa de chocolate gratis por cada ` +
+      `${PAQUETES_POR_SALSA_GRATIS} paquetes.`;
+  }
+
+  promoSalsa.innerHTML = `
+
+    <span class="promo-salsa-icono">
+      <i class="fa-solid fa-gift" aria-hidden="true"></i>
+    </span>
+
+    <span class="promo-salsa-contenido">
+      <strong>${mensaje}</strong>
+      <small>
+        Agregá ${paquetesParaProximaSalsa}
+        paquete${paquetesParaProximaSalsa === 1 ? "" : "s"} más
+        para la próxima salsa gratis.
+      </small>
+    </span>
+  `;
+}
+
+
 /* =========================
    RENDER GENERAL
 ========================= */
@@ -595,6 +777,7 @@ function render() {
 
   renderPaquetes();
   renderResumen();
+  renderPromoSalsa();
 
 }
 
@@ -717,8 +900,39 @@ document
 
 
       const total =
-        paquetes.length *
-        PRECIO_PAQUETE;
+        paquetes.reduce(
+          (acumulado, paquete) =>
+            acumulado + calcularPrecioPaquete(paquete),
+          0
+        );
+
+      const salsasGratis =
+        cantidadSalsasGratis();
+
+      const paquetesParaEnviar =
+        paquetes.map(
+          (paquete, index) => ({
+            ...paquete,
+            chocolate:
+              Number(paquete.chocolate || 0) +
+              (
+                (index + 1) %
+                  PAQUETES_POR_SALSA_GRATIS ===
+                0
+                  ? 1
+                  : 0
+              )
+          })
+        );
+
+      const comentariosConPromo = [
+        comentarios,
+        salsasGratis > 0
+          ? `Promo: ${salsasGratis} salsa${salsasGratis > 1 ? "s" : ""} de chocolate gratis`
+          : ""
+      ]
+        .filter(Boolean)
+        .join(" | ");
 
 
       const payload = {
@@ -726,9 +940,9 @@ document
         nombre,
         telefono,
         pago,
-        comentarios,
+        comentarios: comentariosConPromo,
 
-        paquetes,
+        paquetes: paquetesParaEnviar,
 
         cantidadPaquetes:
           paquetes.length,

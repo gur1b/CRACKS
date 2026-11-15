@@ -424,6 +424,7 @@ a {
 /* HERO IMAGE */
 
 .hero-image {
+  position: relative;
   width: 100%;
 }
 
@@ -885,6 +886,130 @@ a {
 
   box-shadow:
     0 4px 16px rgba(55, 27, 13, 0.12);
+}
+
+
+.ultimo-sabado-sticker {
+  position: absolute;
+  top: 24px;
+  right: 5%;
+  z-index: 3;
+
+  width: 174px;
+  aspect-ratio: 1;
+
+  display: grid;
+  place-items: center;
+
+  filter: drop-shadow(0 9px 7px rgba(49, 25, 13, 0.32));
+  transform: rotate(9deg);
+}
+
+
+.ultimo-sabado-sticker::before,
+.ultimo-sabado-sticker::after {
+  position: absolute;
+  inset: 0;
+
+  content: "";
+
+  clip-path: polygon(
+    50% 0%, 58% 7%, 68% 2%, 74% 10%, 85% 7%,
+    88% 18%, 98% 23%, 93% 34%, 100% 42%,
+    94% 51%, 99% 61%, 89% 68%, 91% 80%,
+    79% 83%, 74% 95%, 63% 90%, 53% 100%,
+    44% 92%, 33% 98%, 28% 87%, 16% 89%,
+    16% 77%, 4% 72%, 9% 61%, 0% 52%,
+    7% 43%, 2% 32%, 13% 26%, 11% 14%,
+    24% 14%, 31% 3%, 41% 9%
+  );
+}
+
+
+.ultimo-sabado-sticker::before {
+  background: #fff8f0;
+}
+
+
+.ultimo-sabado-sticker::after {
+  inset: 7px;
+  background: #55c5e6;
+}
+
+
+.ultimo-sabado-sticker-texto {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 2px 3px rgba(27, 85, 104, 0.34);
+}
+
+
+.ultimo-sabado-sticker-texto strong {
+  font-size: 0.86rem;
+  letter-spacing: 0.1em;
+}
+
+
+.ultimo-sabado-sticker-texto span {
+  margin-top: 4px;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+
+.ultimo-sabado-sticker-texto small {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+
+.ultimo-sabado-sticker-texto b {
+  margin-top: 3px;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+
+@media (min-width: 900px) {
+  .ultimo-sabado-sticker {
+    right: auto;
+    left: clamp(660px, calc(50vw + 96px), calc(100vw - 216px));
+    width: 192px;
+  }
+
+  .ultimo-sabado-sticker-texto strong {
+    font-size: 0.95rem;
+  }
+
+  .ultimo-sabado-sticker-texto span {
+    font-size: 1.7rem;
+  }
+
+  .ultimo-sabado-sticker-texto small {
+    font-size: 0.76rem;
+  }
+
+  .ultimo-sabado-sticker-texto b {
+    font-size: 1.1rem;
+  }
+}
+
+
+.hero-image .ultimo-sabado-sticker-home {
+  top: 18px;
+  right: 18px;
+  left: auto;
+  width: 150px;
 }
 
 
@@ -2064,6 +2189,45 @@ textarea {
   }
 
 
+  .ultimo-sabado-sticker {
+    top: 0;
+    right: 12px;
+    width: 88px;
+  }
+
+
+  .hero-image .ultimo-sabado-sticker-home {
+    top: 10px;
+    right: 10px;
+    width: 98px;
+  }
+
+
+  .ultimo-sabado-sticker-texto strong {
+    font-size: clamp(0.52rem, 2vw, 0.62rem);
+    letter-spacing: 0.06em;
+  }
+
+
+  .ultimo-sabado-sticker-texto span {
+    margin-top: 3px;
+    font-size: clamp(0.78rem, 3.4vw, 0.92rem);
+  }
+
+
+  .ultimo-sabado-sticker-texto small {
+    margin-top: 3px;
+    font-size: clamp(0.44rem, 1.7vw, 0.5rem);
+    letter-spacing: 0.1em;
+  }
+
+
+  .ultimo-sabado-sticker-texto b {
+    margin-top: 2px;
+    font-size: clamp(0.62rem, 2.5vw, 0.72rem);
+  }
+
+
   .pedido-title-box {
     padding:
       20px;
@@ -2516,6 +2680,156 @@ textarea {
 
   font-size: 1rem;
   font-weight: 700;
+}
+
+
+.salsa-chocolate-opcion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 15px;
+  padding: 11px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: #fffaf5;
+
+  cursor: pointer;
+}
+
+
+.salsa-chocolate-aviso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 16px;
+  padding: 11px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: #f7ede3;
+}
+
+
+.salsa-chocolate-opcion input {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  accent-color: var(--primary);
+
+  cursor: pointer;
+}
+
+
+.salsa-chocolate-icono {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #edd5bf;
+  color: var(--primary);
+}
+
+
+.salsa-chocolate-svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+.salsa-chocolate-mini-icon {
+  width: 14px;
+  height: 14px;
+
+  margin-right: 4px;
+  vertical-align: -2px;
+}
+
+
+.salsa-chocolate-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.salsa-chocolate-detalle strong {
+  font-size: 0.9rem;
+}
+
+
+.salsa-chocolate-detalle small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+
+.promo-salsa {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  margin-bottom: 16px;
+  padding: 13px 15px;
+
+  border: 1px solid #d99866;
+  border-radius: 12px;
+
+  background: #f8e1cd;
+  color: var(--primary-dark);
+}
+
+
+.promo-salsa-icono {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #e9b083;
+  color: var(--primary);
+}
+
+
+.promo-salsa-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.promo-salsa-contenido strong {
+  font-size: 0.9rem;
+}
+
+
+.promo-salsa-contenido small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+
+.resumen-promo-salsa {
+  color: var(--primary-dark);
 }
 
 
